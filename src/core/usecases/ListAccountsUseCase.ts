@@ -1,5 +1,5 @@
-import Account from "../entities/Account";
-import { AccountRepository } from "../repositories/AccountRepository";
+import Account from "@/core/entities/Account";
+import { AccountRepository } from "@/core/repositories/AccountRepository";
 
 export default class ListAccountsUseCase {
   constructor(private accountRepository: AccountRepository) {}

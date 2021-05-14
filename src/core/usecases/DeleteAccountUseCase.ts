@@ -1,4 +1,4 @@
-import { AccountRepository } from "../repositories/AccountRepository";
+import { AccountRepository } from "@/core/repositories/AccountRepository";
 
 export default class DeleteAccountUseCase {
   constructor(private accountRepository: AccountRepository) {}

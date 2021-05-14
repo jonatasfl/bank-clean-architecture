@@ -1,4 +1,4 @@
-import Account, { CreateAccountDTO } from "../entities/Account";
+import Account, { CreateAccountDTO } from "@/core/entities/Account";
 
 export interface AccountRepository {
   index(): Promise<Account[]>;

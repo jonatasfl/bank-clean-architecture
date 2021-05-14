@@ -1,6 +1,6 @@
-import AccountViewModel from "../../adapters/view-models/account";
-import Account, { CreateAccountDTO } from "../../core/entities/Account";
-import { AccountRepository } from "../../core/repositories/AccountRepository";
+import AccountViewModel from "@/adapters/view-models/account";
+import Account, { CreateAccountDTO } from "@/core/entities/Account";
+import { AccountRepository } from "@/core/repositories/AccountRepository";
 
 export default class AccountRepositoryMemory implements AccountRepository {
   accounts: Account[] = [

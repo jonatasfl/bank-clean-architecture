@@ -1,4 +1,4 @@
-import Account, { CreateAccountDTO } from "../../core/entities/Account";
+import Account, { CreateAccountDTO } from "@/core/entities/Account";
 
 export default class AccountViewModel {
   static create({

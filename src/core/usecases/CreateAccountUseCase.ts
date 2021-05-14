@@ -1,5 +1,5 @@
-import Account, { CreateAccountDTO } from "../entities/Account";
-import { AccountRepository } from "../repositories/AccountRepository";
+import Account, { CreateAccountDTO } from "@/core/entities/Account";
+import { AccountRepository } from "@/core/repositories/AccountRepository";
 
 export default class CreateAccountUseCase {
   constructor(private accountRepository: AccountRepository) {}
