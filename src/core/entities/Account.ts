@@ -31,3 +31,5 @@ export default class Account {
     this.createdAt = new Date();
   }
 }
+
+export type CreateAccountDTO = Omit<Account, "id" | "createdAt">;
