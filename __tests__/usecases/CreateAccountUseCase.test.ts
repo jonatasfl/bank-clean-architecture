@@ -18,7 +18,7 @@ describe("Account Test Suit", () => {
       balance: 10000,
       dailyWithdrawLimit: 800,
       active: true,
-      type: 1,
+      type: 1
     });
     expect(account).toHaveProperty("id");
     expect(account.balance).toBe(10000);

@@ -3,7 +3,17 @@ import Account, { CreateAccountDTO } from "../../core/entities/Account";
 import { AccountRepository } from "../../core/repositories/AccountRepository";
 
 export default class AccountRepositoryMemory implements AccountRepository {
-  accounts = [new Account("001", 2500, 500, true, 1)];
+  accounts: Account[] = [
+    {
+      id: "000001",
+      owner: "001",
+      balance: 5000,
+      dailyWithdrawLimit: 800,
+      active: true,
+      type: 1,
+      createdAt: new Date()
+    }
+  ];
 
   index(): Promise<Account[]> {
     return Promise.resolve(this.accounts);
@@ -23,9 +33,13 @@ export default class AccountRepositoryMemory implements AccountRepository {
   }
 
   getById(id: string): Promise<Account | null> {
-    const accountData = this.accounts.find((acc) => acc.id === id);
+    const accountData = this.accounts.find(acc => acc.id === id);
     return accountData
       ? Promise.resolve(AccountViewModel.create(accountData))
       : Promise.resolve(null);
+  }
+
+  delete(id: string): Promise<void> {
+    this.accounts = this.accounts.map(acc => acc.id !== id);
   }
 }
