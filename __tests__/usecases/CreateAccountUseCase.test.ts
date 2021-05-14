@@ -1,5 +1,6 @@
 import { AccountRepository } from "../../src/core/repositories/AccountRepository";
 import CreateAccountUseCase from "../../src/core/usecases/CreateAccountUseCase";
+import GetAccountUseCase from "../../src/core/usecases/GetAccountUseCase";
 import ListAccountsUseCase from "../../src/core/usecases/ListAccountsUseCase";
 import AccountRepositoryMemory from "../../src/infra/repositories/AccountRepositoryMemory";
 
@@ -33,6 +34,15 @@ describe("Account Test Suit", () => {
   });
 
   it("should be able to get account by id", async () => {
-    expect(1).toBe(1);
+    const getAccount = new GetAccountUseCase(accountRepoMemory);
+    const account = await getAccount.execute(
+      "0fd767b7-7795-441a-bb0f-ebc1014da34d"
+    );
+    expect(account?.owner).toBe("001");
+  });
+
+  it("should throw an error if account does not exists", () => {
+    const getAccount = new GetAccountUseCase(accountRepoMemory);
+    expect(getAccount.execute("invalid id")).rejects.toThrow();
   });
 });

@@ -5,7 +5,7 @@ import { AccountRepository } from "../../core/repositories/AccountRepository";
 export default class AccountRepositoryMemory implements AccountRepository {
   accounts: Account[] = [
     {
-      id: "000001",
+      id: "0fd767b7-7795-441a-bb0f-ebc1014da34d",
       owner: "001",
       balance: 5000,
       dailyWithdrawLimit: 800,
@@ -35,9 +35,7 @@ export default class AccountRepositoryMemory implements AccountRepository {
 
   getById(id: string): Promise<Account | null> {
     const accountData = this.accounts.find(acc => acc.id === id);
-    return accountData
-      ? Promise.resolve(AccountViewModel.create(accountData))
-      : Promise.resolve(null);
+    return accountData ? Promise.resolve(accountData) : Promise.resolve(null);
   }
 
   delete(id: string): Promise<void> {
