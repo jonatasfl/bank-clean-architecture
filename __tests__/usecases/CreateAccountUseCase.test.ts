@@ -1,8 +1,8 @@
 import { AccountRepository } from "@/core/repositories/AccountRepository";
-import CreateAccountUseCase from "@/core/usecases/CreateAccountUseCase";
-import DeleteAccountUseCase from "@/core/usecases/DeleteAccountUseCase";
-import GetAccountUseCase from "@/core/usecases/GetAccountUseCase";
-import ListAccountsUseCase from "@/core/usecases/ListAccountsUseCase";
+import CreateAccountUseCase from "@/core/usecases/account/CreateAccountUseCase";
+import DeleteAccountUseCase from "@/core/usecases/account/DeleteAccountUseCase";
+import GetAccountUseCase from "@/core/usecases/account/GetAccountUseCase";
+import ListAccountsUseCase from "@/core/usecases/account/ListAccountsUseCase";
 import AccountRepositoryMemory from "@/infra/repositories/AccountRepositoryMemory";
 
 let accountRepoMemory: AccountRepository;
