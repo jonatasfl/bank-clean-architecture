@@ -1,5 +1,6 @@
 import { AccountRepository } from "../../src/core/repositories/AccountRepository";
 import CreateAccountUseCase from "../../src/core/usecases/CreateAccountUseCase";
+import DeleteAccountUseCase from "../../src/core/usecases/DeleteAccountUseCase";
 import GetAccountUseCase from "../../src/core/usecases/GetAccountUseCase";
 import ListAccountsUseCase from "../../src/core/usecases/ListAccountsUseCase";
 import AccountRepositoryMemory from "../../src/infra/repositories/AccountRepositoryMemory";
@@ -41,8 +42,25 @@ describe("Account Test Suit", () => {
     expect(account?.owner).toBe("001");
   });
 
-  it("should throw an error if account does not exists", () => {
+  it("should throw an error if account does not exists", async () => {
     const getAccount = new GetAccountUseCase(accountRepoMemory);
-    expect(getAccount.execute("invalid id")).rejects.toThrow();
+    expect(getAccount.execute("xxx")).rejects.toThrow();
+  });
+
+  it("should be able to delete an account", async () => {
+    const createAccount = new CreateAccountUseCase(accountRepoMemory);
+    const account = await createAccount.execute({
+      owner: "002",
+      balance: 10000,
+      dailyWithdrawLimit: 800,
+      active: true,
+      type: 1
+    });
+    const getAccount = new GetAccountUseCase(accountRepoMemory);
+    expect(await getAccount.execute(account.id)).toHaveProperty("owner", "002");
+
+    const usecase = new DeleteAccountUseCase(accountRepoMemory);
+    await usecase.execute(account.id);
+    expect(getAccount.execute(account.id)).rejects.toThrow();
   });
 });
