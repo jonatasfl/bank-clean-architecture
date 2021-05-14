@@ -21,6 +21,7 @@ describe("Account Test Suit", () => {
       type: 1,
     });
     expect(account).toHaveProperty("id");
+    expect(account.balance).toBe(10000);
     expect(account.id).toMatch(
       /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
     );

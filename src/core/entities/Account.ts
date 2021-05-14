@@ -32,4 +32,10 @@ export default class Account {
   }
 }
 
-export type CreateAccountDTO = Omit<Account, "id" | "createdAt">;
+export type CreateAccountDTO = {
+  owner: string;
+  balance: number;
+  dailyWithdrawLimit: number;
+  active: boolean;
+  type: number;
+};
