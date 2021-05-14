@@ -4,6 +4,10 @@
   "description": "Bank Account Test",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev indes.ts",
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.3",
