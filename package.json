@@ -1,0 +1,11 @@
+{
+  "name": "bank-account",
+  "version": "1.0.0",
+  "description": "Bank Account Test",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^15.0.3",
+    "typescript": "^4.2.4"
+  }
+}
