@@ -6,7 +6,7 @@ export default class AccountViewModel {
     balance,
     dailyWithdrawLimit,
     active,
-    type,
+    type
   }: CreateAccountDTO): Account {
     return new Account(owner, balance, dailyWithdrawLimit, active, type);
   }

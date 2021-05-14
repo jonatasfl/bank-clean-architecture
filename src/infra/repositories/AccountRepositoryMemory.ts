@@ -21,13 +21,14 @@ export default class AccountRepositoryMemory implements AccountRepository {
 
   create(data: CreateAccountDTO): Promise<Account> {
     const { owner, balance, dailyWithdrawLimit, active, type } = data;
-    const account = new Account(
+    const account = AccountViewModel.create({
       owner,
       balance,
       dailyWithdrawLimit,
       active,
       type
-    );
+    });
+
     this.accounts.push(account);
     return Promise.resolve(account);
   }
