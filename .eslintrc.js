@@ -19,6 +19,8 @@ module.exports = {
   ],
   rules: {
     "no-use-before-define": "off",
+    "no-useless-constructor": "off",
+    "class-methods-use-this": "off",
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
     "import/extensions": [
