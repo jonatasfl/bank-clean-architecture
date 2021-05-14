@@ -40,6 +40,7 @@ export default class AccountRepositoryMemory implements AccountRepository {
   }
 
   delete(id: string): Promise<void> {
-    this.accounts = this.accounts.map(acc => acc.id !== id);
+    this.accounts = this.accounts.filter(acc => acc.id !== id);
+    return Promise.resolve();
   }
 }

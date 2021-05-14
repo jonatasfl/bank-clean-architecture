@@ -1,10 +1,15 @@
+import { AccountRepository } from "../../src/core/repositories/AccountRepository";
 import CreateAccountUseCase from "../../src/core/usecases/CreateAccountUseCase";
 import ListAccountsUseCase from "../../src/core/usecases/ListAccountsUseCase";
 import AccountRepositoryMemory from "../../src/infra/repositories/AccountRepositoryMemory";
 
-const accountRepoMemory = new AccountRepositoryMemory();
+let accountRepoMemory: AccountRepository;
 
 describe("Account Test Suit", () => {
+  beforeEach(() => {
+    accountRepoMemory = new AccountRepositoryMemory();
+  });
+
   it("should be able to list all accounts", async () => {
     const listAccounts = new ListAccountsUseCase(accountRepoMemory);
     const accounts = await listAccounts.execute();
@@ -25,5 +30,9 @@ describe("Account Test Suit", () => {
     expect(account.id).toMatch(
       /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
     );
+  });
+
+  it("should be able to get account by id", async () => {
+    expect(1).toBe(1);
   });
 });
