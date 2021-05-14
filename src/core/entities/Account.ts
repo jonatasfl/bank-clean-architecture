@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export default class Account {
   id: string;
@@ -15,7 +15,13 @@ export default class Account {
 
   createdAt: Date;
 
-  constructor(owner: string, balance: number, dailyWithdrawLimit: number, active: boolean, type: number) {
+  constructor(
+    owner: string,
+    balance: number,
+    dailyWithdrawLimit: number,
+    active: boolean,
+    type: number
+  ) {
     this.id = uuidv4();
     this.owner = owner;
     this.balance = balance;
