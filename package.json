@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev indes.ts",
-    "test": "jest",
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
     "test:cov": "jest --coverage"
   },
   "devDependencies": {
