@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 export default class Account {
-  id: string;
+  id = "";
 
   owner: string;
 
@@ -20,9 +20,12 @@ export default class Account {
     balance: number,
     dailyWithdrawLimit: number,
     active: boolean,
-    type: number
+    type: number,
+    id?: string
   ) {
-    this.id = uuidv4();
+    if (!id) {
+      this.id = uuidv4();
+    }
     this.owner = owner;
     this.balance = balance;
     this.dailyWithdrawLimit = dailyWithdrawLimit;
