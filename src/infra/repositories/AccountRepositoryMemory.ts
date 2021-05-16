@@ -1,5 +1,5 @@
 import AccountViewModel from "@/adapters/view-models/account";
-import Account, { CreateAccountDTO } from "@/core/entities/Account";
+import Account, { AccountDTO } from "@/core/entities/Account";
 import { AccountRepository } from "@/core/repositories/AccountRepository";
 
 export default class AccountRepositoryMemory implements AccountRepository {
@@ -16,10 +16,11 @@ export default class AccountRepositoryMemory implements AccountRepository {
   ];
 
   index(): Promise<Account[]> {
-    return Promise.resolve(this.accounts);
+    const accounts = this.accounts.map(acc => AccountViewModel.create(acc));
+    return Promise.resolve(accounts);
   }
 
-  create(data: CreateAccountDTO): Promise<Account> {
+  create(data: AccountDTO): Promise<Account> {
     const { owner, balance, dailyWithdrawLimit, active, type } = data;
     const account = AccountViewModel.create({
       owner,
@@ -35,7 +36,9 @@ export default class AccountRepositoryMemory implements AccountRepository {
 
   getById(id: string): Promise<Account | null> {
     const accountData = this.accounts.find(acc => acc.id === id);
-    return accountData ? Promise.resolve(accountData) : Promise.resolve(null);
+    return accountData
+      ? Promise.resolve(AccountViewModel.create(accountData))
+      : Promise.resolve(null);
   }
 
   delete(id: string): Promise<void> {

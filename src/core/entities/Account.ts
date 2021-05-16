@@ -23,9 +23,8 @@ export default class Account {
     type: number,
     id?: string
   ) {
-    if (!id) {
-      this.id = uuidv4();
-    }
+    this.id = !id ? uuidv4() : id;
+
     this.owner = owner;
     this.balance = balance;
     this.dailyWithdrawLimit = dailyWithdrawLimit;
@@ -35,7 +34,8 @@ export default class Account {
   }
 }
 
-export type CreateAccountDTO = {
+export type AccountDTO = {
+  id?: string;
   owner: string;
   balance: number;
   dailyWithdrawLimit: number;
