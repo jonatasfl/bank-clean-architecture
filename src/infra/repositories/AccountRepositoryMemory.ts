@@ -1,4 +1,4 @@
-import AccountViewModel from "@/adapters/view-models/account";
+import AccountViewModel from "@/adapters/view-models/AccountViewModel";
 import Account, { AccountDTO } from "@/core/entities/Account";
 import { AccountRepository } from "@/core/repositories/AccountRepository";
 
