@@ -9,8 +9,8 @@ export default class Person {
 
   birthDate: Date;
 
-  constructor(name: string, cpf: number, birthDate: Date) {
-    this.id = uuidv4();
+  constructor(name: string, cpf: number, birthDate: Date, id?: string) {
+    this.id = id || uuidv4();
     this.name = name;
     this.cpf = cpf;
     this.birthDate = birthDate;
