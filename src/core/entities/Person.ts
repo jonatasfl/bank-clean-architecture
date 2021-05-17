@@ -16,3 +16,10 @@ export default class Person {
     this.birthDate = birthDate;
   }
 }
+
+export type PersonDTO = {
+  id?: string;
+  name: string;
+  cpf: number;
+  birthDate: string;
+};
