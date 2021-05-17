@@ -21,16 +21,16 @@ export default class Account {
     dailyWithdrawLimit: number,
     active: boolean,
     type: number,
-    id?: string
+    id?: string,
+    createdAt?: string | Date
   ) {
-    this.id = !id ? uuidv4() : id;
-
+    this.id = id || uuidv4();
     this.owner = owner;
     this.balance = balance;
     this.dailyWithdrawLimit = dailyWithdrawLimit;
     this.active = active;
     this.type = type;
-    this.createdAt = new Date();
+    this.createdAt = createdAt ? new Date(createdAt) : new Date();
   }
 }
 
@@ -41,4 +41,5 @@ export type AccountDTO = {
   dailyWithdrawLimit: number;
   active: boolean;
   type: number;
+  createdAt?: string | Date;
 };

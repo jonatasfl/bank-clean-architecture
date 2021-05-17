@@ -15,7 +15,8 @@ describe("Account Test Suit", () => {
   it("should be able to list all accounts", async () => {
     const listAccounts = new ListAccountsUseCase(accountRepoMemory);
     const accounts = await listAccounts.execute();
-    expect(accounts[0]).toHaveProperty("id");
+    expect(accounts[0]).toHaveProperty("id", "0fd767b7-7795-441a-bb0f-ebc1014da34d");
+    expect(accounts[0].createdAt).toEqual(new Date("2021-05-17T21:20:21.477Z"));
   });
 
   it("should be able to create a new account", async () => {
@@ -29,16 +30,12 @@ describe("Account Test Suit", () => {
     });
     expect(account).toHaveProperty("id");
     expect(account.balance).toBe(10000);
-    expect(account.id).toMatch(
-      /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
-    );
+    expect(account.id).toMatch(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i);
   });
 
   it("should be able to get account by id", async () => {
     const getAccount = new GetAccountUseCase(accountRepoMemory);
-    const account = await getAccount.execute(
-      "0fd767b7-7795-441a-bb0f-ebc1014da34d"
-    );
+    const account = await getAccount.execute("0fd767b7-7795-441a-bb0f-ebc1014da34d");
     expect(account?.owner).toBe("001");
   });
 
