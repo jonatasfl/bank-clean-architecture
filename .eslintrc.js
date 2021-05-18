@@ -18,6 +18,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    "no-octal": "off",
     "no-use-before-define": "off",
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
