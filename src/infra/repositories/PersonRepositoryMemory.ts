@@ -2,8 +2,15 @@ import PersonViewModel from "@/adapters/view-models/PersonViewModel";
 import Person, { PersonDTO } from "@/core/entities/Person";
 import { PersonRepository } from "@/core/repositories/PersonRepository";
 
+type PersonMemory = {
+  id: string;
+  name: string;
+  cpf: string;
+  birthDate: string | Date;
+};
+
 export default class PersonRepositoryMemory implements PersonRepository {
-  persons = [
+  persons: PersonMemory[] = [
     {
       id: "8b0bb0ea-7017-48b2-8b74-365cab76e7da",
       name: "John Doe",
@@ -18,7 +25,9 @@ export default class PersonRepositoryMemory implements PersonRepository {
   }
 
   create(data: PersonDTO): Promise<Person> {
-    throw new Error("Method not implemented.");
+    const person = PersonViewModel.create(data);
+    this.persons.push(person);
+    return Promise.resolve(person);
   }
 
   getById(id: string): Promise<Person | null> {
