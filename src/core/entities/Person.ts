@@ -5,11 +5,11 @@ export default class Person {
 
   name: string;
 
-  cpf: number;
+  cpf: string;
 
-  birthDate: Date;
+  birthDate: string | Date;
 
-  constructor(name: string, cpf: number, birthDate: Date, id?: string) {
+  constructor(name: string, cpf: string, birthDate: string | Date, id?: string) {
     this.id = id || uuidv4();
     this.name = name;
     this.cpf = cpf;
@@ -20,6 +20,6 @@ export default class Person {
 export type PersonDTO = {
   id?: string;
   name: string;
-  cpf: number;
-  birthDate: string;
+  cpf: string;
+  birthDate: string | Date;
 };
